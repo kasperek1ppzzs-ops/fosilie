@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prehistorická vitrína | Paleontologická zbierka</title>
+  <meta name="description" content="Interaktívny sprievodca domácou zbierkou fosílií a dinosaurov. Naskenujte QR kód a spoznajte vek, lokalitu a príbehy vystavených exponátov.">
+  <meta name="theme-color" content="#0a0c10">
+
+  <!-- Open Graph / Meta pre sociálne siete -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Prehistorická vitrína | Paleontologická zbierka">
+  <meta property="og:description" content="Interaktívny mobilný sprievodca vystavenými fosíliami a dinosaurami.">
+  <meta property="og:image" content="assets/spinosaurus.jpg">
+
+  <!-- Favicon (Dinosaurus / Fosília) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'><path d='M19.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-5-7C9.8 2.5 6 6.3 6 11c0 2.2.8 4.2 2.2 5.8L7 21h3l1.1-2.2C12.3 19 13.6 19.2 15 19.2c4.7 0 8.5-3.8 8.5-8.5 0-4.6-3.7-8.2-9-8.2zm.5 14.7c-3.6 0-6.5-2.9-6.5-6.5 0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5-2.9 6.5-6.5 6.5z'/></svg>">
+
+  <!-- Google Fonts: Cinzel (múzejné nadpisy) & Outfit (čistý moderný text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=9">
+</head>
+<body>
+
+  <!-- Dekoratívne ambientné svetlá na pozadí -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+
+  <!-- Úvodný Hero titulok -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Objavte pravek v našej vitrínke</h1>
+    </div>
+  </section>
+
+  <!-- Geologická časová os Zeme (Horizontálna priamka s obdobiami a fosíliami) -->
+  <section class="geochron-section" aria-label="Geologické obdobia a časová os">
+    <div class="geochron-container">
+      <div class="geochron-header">
+        <h2 class="geochron-title">Geologické obdobia & naše fosílie na časovej osi</h2>
+      </div>
+
+      <!-- Vodorovný interaktívny pás s posuvom -->
+      <div class="timeline-viewport-wrapper">
+        <div class="timeline-scroll-container">
+          <div class="timeline-horizontal-canvas">
+
+            <!-- Lišta geologických ér nad čiarou -->
+            <div class="timeline-eras-row">
+              <div class="era-row-badge era-badge-paleo">
+                <span class="era-row-dot"></span>
+                <strong>Prvohory</strong> (Paleozoikum • 541 – 252 mil. r.)
+              </div>
+              <div class="era-row-badge era-badge-meso">
+                <span class="era-row-dot"></span>
+                <strong>Druhohory</strong> (Mezozoikum • 252 – 66 mil. r.)
+              </div>
+              <div class="era-row-badge era-badge-ceno">
+                <span class="era-row-dot"></span>
+                <strong>Kenozoikum</strong> (Treťohory & Dnes • 66 mil. r. – Súčasnosť)
+              </div>
+            </div>
+
+            <!-- Horizontálna línia s bodmi a priradenými kartami (Staggered Hore/Dole) -->
+            <div class="timeline-line-axis-container">
+              
+              <!-- 1. KAMBRIUM -->
+              <div class="axis-point-column col-standard">
+                <div class="point-slot-top"></div>
+                <div class="axis-center-node">
+                  <div class="node-milestone" title="Kambrium (541 mil. r.) • Explózia morského života">
+                    <span class="milestone-dot"></span>
+                    <span class="milestone-name">Kambrium</span>
+                    <span class="milestone-age">541 mil. r.</span>
+                  </div>
+                </div>
+                <div class="point-slot-bottom"></div>
+              </div>
+
+              <!-- 2. DEVÓN -> NAŠA FOSÍLIA: TRILOBIT (HORE) -->
+              <div class="axis-point-column col-fossil-top">
+                <div class="point-slot-top">
+                  <button type="button" class="timeline-fossil-pin fossil-timeline-card pin-trilobite" data-fossil-id="trilobite" title="Zobraziť Trilobita (Devón • 420 mil. r.)">
+                    <img src="assets/trilobite_life.jpg" alt="Trilobit" class="card-pin-thumb">
+                    <div class="card-pin-body">
+                      <span class="card-pin-tag">Vitrínka • 420 mil. r.</span>
+                      <strong class="card-pin-name">Trilobit</strong>
+                      <span class="card-pin-sub">Phacops • Devón</span>
+                    </div>
+                  </button>
+                  <div class="stem-line stem-to-bottom"></div>
+                </div>
+                <div class="axis-center-node">
+                  <div class="node-milestone node-milestone-fossil" title="Devón • 420 miliónov rokov">
+                    <span class="milestone-dot dot-paleo"></span>
+                    <span class="milestone-name text-paleo">Devón</span>
+                    <span class="milestone-age">420 mil. r.</span>
+                  </div>
+                </div>
+                <div class="point-slot-bottom"></div>
+              </div>
+
+              <!-- 3. KARBÓN & PERM -->
+              <div class="axis-point-column col-standard">
+                <div class="point-slot-top"></div>
+                <div class="axis-center-node">
+                  <div class="node-milestone" title="Karbón & Perm (300 mil. r.) • Praveké močiare a lesy">
+                    <span class="milestone-dot"></span>
+                    <span class="milestone-name">Karbón & Perm</span>
+                    <span class="milestone-age">300 mil. r.</span>
+                  </div>
+                </div>
+                <div class="point-slot-bottom"></div>
+              </div>
+
+              <!-- 4. TRIAS -->
+              <div class="axis-point-column col-standard">
+                <div class="point-slot-top"></div>
+                <div class="axis-center-node">
+                  <div class="node-milestone" title="Trias (252 mil. r.) • Počiatok éry dinosaurov">
+                    <span class="milestone-dot"></span>
+                    <span class="milestone-name">Trias</span>
+                    <span class="milestone-age">252 mil. r.</span>
+                  </div>
+                </div>
+                <div class="point-slot-bottom"></div>
+              </div>
+
+              <!-- 5. JURA -->
+              <div class="axis-point-column col-standard">
+                <div class="point-slot-top"></div>
+                <div class="axis-center-node">
+                  <div class="node-milestone" title="Jura (150 mil. r.) • Zlatý vek gigantov">
+                    <span class="milestone-dot"></span>
+                    <span class="milestone-name">Jura</span>
+                    <span class="milestone-age">150 mil. r.</span>
+                  </div>
+                </div>
+                <div class="point-slot-bottom"></div>
+              </div>
+
+              <!-- 6. KRIEDA (stred) -> NAŠA FOSÍLIA: SPINOSAURUS (DOLE) -->
+              <div class="axis-point-column col-fossil-bottom">
+                <div class="point-slot-top"></div>
+                <div class="axis-center-node">
+                  <div class="node-milestone node-milestone-fossil" title="Krieda • 98 miliónov rokov">
+                    <span class="milestone-dot dot-meso"></span>
+                    <span class="milestone-name text-meso">Krieda (stred)</span>
+                    <span class="milestone-age">98 mil. r.</span>
+                  </div>
+                </div>
+                <div class="point-slot-bottom">
+                  <div class="stem-line stem-to-top"></div>
+                  <button type="button" class="timeline-fossil-pin fossil-timeline-card pin-spino" data-fossil-id="spinosaurus" title="Zobraziť Spinosaurusa (Krieda • 98 mil. r.)">
+                    <img src="assets/spinosaurus_life.jpg" alt="Spinosaurus" class="card-pin-thumb">
+                    <div class="card-pin-body">
+                      <span class="card-pin-tag">Vitrínka • 98 mil. r.</span>
+                      <strong class="card-pin-name">Spinosaurus</strong>
+                      <span class="card-pin-sub">Cenoman • Zub</span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 7. KRIEDA (záver) -> NAŠA FOSÍLIA: MOSASAURUS (HORE) -->
+              <div class="axis-point-column col-fossil-top">
+                <div class="point-slot-top">
+                  <button type="button" class="timeline-fossil-pin fossil-timeline-card pin-mosa" data-fossil-id="mosasaurus" title="Zobraziť Mosasaura (Krieda • 70 mil. r.)">
+                    <img src="assets/mosasaurus_life.jpg" alt="Mosasaurus" class="card-pin-thumb">
+                    <div class="card-pin-body">
+                      <span class="card-pin-tag">Vitrínka • 70 mil. r.</span>
+                      <strong class="card-pin-name">Mosasaurus</strong>
+                      <span class="card-pin-sub">Maastricht • Zub</span>
+                    </div>
+                  </button>
+                  <div class="stem-line stem-to-bottom"></div>
+                </div>
+                <div class="axis-center-node">
+                  <div class="node-milestone node-milestone-fossil" title="Krieda • 70 miliónov rokov">
+                    <span class="milestone-dot dot-meso"></span>
+                    <span class="milestone-name text-meso">Krieda (záver)</span>
+                    <span class="milestone-age">70 mil. r.</span>
+                  </div>
+                </div>
+                <div class="point-slot-bottom"></div>
+              </div>
+
+              <!-- 8. ASTEROID CHICXULUB (66 mil. r.) -> VYMIERANIE (DOLE) -->
+              <div class="axis-point-column col-event-bottom">
+                <div class="point-slot-top"></div>
+                <div class="axis-center-node">
+                  <div class="node-milestone node-milestone-impact" title="Dopad asteroidu Chicxulub • 66 mil. r.">
+                    <span class="milestone-dot dot-impact"></span>
+                    <span class="milestone-name text-impact">Pád asteroidu</span>
+                    <span class="milestone-age text-impact">66 mil. r.</span>
+                  </div>
+                </div>
+                <div class="point-slot-bottom">
+                  <div class="stem-line stem-to-top stem-impact"></div>
+                  <div class="event-timeline-badge" title="Koniec dinosaurov: Vymieranie K-Pg">
+                    <span class="event-badge-icon">💥</span>
+                    <div class="event-badge-text">
+                      <strong>Koniec dinosaurov</strong>
+                      <small>K-Pg vymieranie (66 mil. r.)</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 9. EOCÉN (more) -> NAŠA FOSÍLIA: ŽRALOK OTODUS (DOLE) -->
+              <div class="axis-point-column col-fossil-bottom">
+                <div class="point-slot-top"></div>
+                <div class="axis-center-node">
+                  <div class="node-milestone node-milestone-fossil" title="Eocén • 50 miliónov rokov">
+                    <span class="milestone-dot dot-ceno"></span>
+                    <span class="milestone-name text-ceno">Eocén (more)</span>
+                    <span class="milestone-age">50 mil. r.</span>
+                  </div>
+                </div>
+                <div class="point-slot-bottom">
+                  <div class="stem-line stem-to-top"></div>
+                  <button type="button" class="timeline-fossil-pin fossil-timeline-card pin-otodus" data-fossil-id="otodus" title="Zobraziť Žraloka Otodus (Eocén • 50 mil. r.)">
+                    <img src="assets/otodus_life.jpg" alt="Žralok Otodus" class="card-pin-thumb">
+                    <div class="card-pin-body">
+                      <span class="card-pin-tag">Vitrínka • 50 mil. r.</span>
+                      <strong class="card-pin-name">Žralok Otodus</strong>
+                      <span class="card-pin-sub">Obliquus • Zub</span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 10. EOCÉN (les) -> NAŠA FOSÍLIA: JANTÁR S HMYZOM (HORE) -->
+              <div class="axis-point-column col-fossil-top">
+                <div class="point-slot-top">
+                  <button type="button" class="timeline-fossil-pin fossil-timeline-card pin-amber" data-fossil-id="amber" title="Zobraziť Jantár s hmyzom (Eocén • 45 mil. r.)">
+                    <img src="assets/amber_life.jpg" alt="Jantár s hmyzom" class="card-pin-thumb">
+                    <div class="card-pin-body">
+                      <span class="card-pin-tag">Vitrínka • 45 mil. r.</span>
+                      <strong class="card-pin-name">Jantár s hmyzom</strong>
+                      <span class="card-pin-sub">Inklúzia v živici</span>
+                    </div>
+                  </button>
+                  <div class="stem-line stem-to-bottom"></div>
+                </div>
+                <div class="axis-center-node">
+                  <div class="node-milestone node-milestone-fossil" title="Eocén • 45 miliónov rokov">
+                    <span class="milestone-dot dot-ceno"></span>
+                    <span class="milestone-name text-ceno">Eocén (les)</span>
+                    <span class="milestone-age">45 mil. r.</span>
+                  </div>
+                </div>
+                <div class="point-slot-bottom"></div>
+              </div>
+
+              <!-- 11. SÚČASNOSŤ (0 mil. r.) -> ČLOVEK (DOLE) -->
+              <div class="axis-point-column col-now-bottom">
+                <div class="point-slot-top"></div>
+                <div class="axis-center-node">
+                  <div class="node-milestone node-milestone-now" title="Súčasnosť • 0 miliónov rokov">
+                    <span class="milestone-dot dot-now"></span>
+                    <span class="milestone-name text-now">Súčasnosť</span>
+                    <span class="milestone-age text-now">Dnes (0 r.)</span>
+                  </div>
+                </div>
+                <div class="point-slot-bottom">
+                  <div class="stem-line stem-to-top stem-now"></div>
+                  <div class="now-timeline-badge" title="Homo sapiens • Dnešok">
+                    <span class="now-badge-icon">🧍</span>
+                    <div class="now-badge-text">
+                      <strong>Človek (Dnes)</strong>
+                      <small>Homo sapiens • Dnes</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div> <!-- .timeline-line-axis-container -->
+
+          </div> <!-- .timeline-horizontal-canvas -->
+        </div> <!-- .timeline-scroll-container -->
+      </div> <!-- .timeline-viewport-wrapper -->
+
+    </div>
+  </section>
+
+  <!-- Hlavný grid s exponátmi -->
+  <main class="gallery-section">
+    <div class="gallery-container" id="fossils-grid">
+      <!-- Generované dynamicky z data.js -->
+    </div>
+  </main>
+
+  <!-- MODÁLNE OKNO PRE DETAIL EXPONÁTU (HTML5 <dialog>) -->
+  <dialog id="fossil-dialog" class="fossil-dialog" aria-labelledby="modal-common-name">
+    <div class="dialog-card">
+      <button type="button" class="dialog-close-btn" id="close-dialog-btn" aria-label="Zatvoriť kartu">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="dialog-scroll-body" id="modal-content-container">
+        <!-- Dynamicky plnené v app.js -->
+      </div>
+    </div>
+  </dialog>
+
+  <!-- CELOOBRAZOVKOVÝ LIGHTBOX PRE FOTKY V MAXIMÁLNOM ROZLÍŠENÍ -->
+  <dialog id="lightbox-dialog" class="lightbox-dialog" aria-label="Zväčšený obrázok na celú obrazovku">
+    <div class="lightbox-wrapper" id="lightbox-wrapper">
+      <div class="lightbox-toolbar">
+        <div class="lightbox-pill-switcher" id="lightbox-pill-switcher">
+          <button type="button" class="view-pill active" id="lb-view-creature">
+            🦕 Podoba tvora
+          </button>
+          <button type="button" class="view-pill" id="lb-view-fossil">
+            🦴 Fosília vo vitrínke
+          </button>
+          <button type="button" class="view-pill" id="lb-view-scale">
+            📏 Porovnanie s človekom
+          </button>
+        </div>
+        
+        <div class="lightbox-title-info">
+          <span id="lightbox-caption-name" class="lb-caption-name">Exponát</span>
+          <span id="lightbox-caption-sub" class="lb-caption-sub"></span>
+        </div>
+
+        <button type="button" class="dialog-close-btn lightbox-close-btn" id="lightbox-close-btn" aria-label="Zavrieť zväčšenie (Esc)">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="lightbox-img-stage" id="lightbox-img-stage">
+        <img id="lightbox-img" src="" alt="Zväčšený obrázok" class="lightbox-img">
+      </div>
+
+      <div class="lightbox-footer-tip">
+        <span>💡 Kliknutím mimo fotky alebo stlačením klávesu Esc zatvoríte zväčšenie</span>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Skripty -->
+  <script src="data.js?v=9"></script>
+  <script src="app.js?v=9"></script>
+</body>
+</html>
