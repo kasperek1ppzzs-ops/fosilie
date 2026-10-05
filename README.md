@@ -2,6 +2,9 @@
 
 > Interaktívny mobilný sprievodca pre hostí k vašej domácej vitrínke s fosíliami a dinosaurami.  
 > Stačí naskenovať QR kód na vitríne a návštevníkovi sa v mobile okamžite otvorí elegantný múzejný katalóg s paleontologickými kartami exponátov, ich vekom a príbehmi.
+>
+> 🌐 **Živý web (GitHub Pages):** [https://kasperek1ppzzs-ops.github.io/fosilie/](https://kasperek1ppzzs-ops.github.io/fosilie/)
+> 📂 **GitHub Repozitár:** [https://github.com/kasperek1ppzzs-ops/fosilie](https://github.com/kasperek1ppzzs-ops/fosilie)
 
 ---
 
