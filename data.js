@@ -73,7 +73,7 @@ const FOSSILS_DATA = [
     name: "Mosasaurus beaugei / hoffmanni",
     commonName: "Mosasaurus",
     category: "marine",
-    fossilType: "Originálny zub morského dravca v matici",
+    fossilType: "2 originálne fosílne zuby (v matici + samostatný zub)",
     period: "Neskorá krieda (Maastricht)",
     shortPeriod: "Krieda (70 mil. r.)",
     age: "cca 66 – 72 miliónov rokov",
@@ -92,7 +92,7 @@ const FOSSILS_DATA = [
       funAnalogy: "Jeho lebka mala takmer 2 metre – dospelý človek by sa do jeho otvorenej tlamy zmestil vystretý celý bez toho, aby sa musel skrčiť. Na jedno prehltnutie by pohltil celého dospelého muža."
     },
 
-    fossilDescription: "Na tento zub sa pozeráte vo vitrínke: Masívny, ťažký zub s tmavou lesklou sklovinou a dvoma ostrými reznými hranami (karínami). V čeľustiach vyvíjal drvivý tlak potrebný na prelomenie hrubých pancierov pravekých morských korytnačiek a schránok amonitov.",
+    fossilDescription: "Na tieto exponáty sa pozeráte vo vitrínke: Dva originálne zuby morského predátora vystavené vedľa seba. Vľavo vidíte zub zachovaný v pôvodnej vápencovej matici horniny presne tak, ako bol vysekaný z marockých fosfátov. Vpravo je masívny izolovaný zub s dokonale odhalenou lesklou sklovinou, mohutnou bázou a dvoma ostrými reznými hranami (karínami) určenými na drvenie pancierov.",
     story: "Hoci Mosasaurus žil v rovnakom čase ako dinosaury, paleontologicky to dinosaurus nebol. Bol to plnohodnotný morský plaz z radu Squamata, ktorého dnešnými žijúcimi bratrancami sú varany a hady. Namiesto nôh mal hydrodynamické pádla a mocný chvost so žraločou plutvou.",
 
     trivia: [
@@ -246,7 +246,7 @@ const FOSSILS_DATA = [
     name: "Phacops rana / Flexicalymene ouzregui",
     commonName: "Trilobit",
     category: "invertebrates",
-    fossilType: "Kompletný trojlaločný pancier článkonožca v hornine",
+    fossilType: "2 originálne fosílne exempláre (s hlavovým štítom + robustný)",
     period: "Devón / Ordovik (staršie prvohory)",
     shortPeriod: "Devón (420 mil. r.)",
     age: "cca 390 – 450 miliónov rokov",
@@ -265,7 +265,7 @@ const FOSSILS_DATA = [
       funAnalogy: "Trilobit sa pohodlne zmestí do ľudskej dlane ruky. Najfascinujúcejší je však časový pomer: Medzi týmto trilobitom a T-Rexom ubehlo VIAC času (350 miliónov rokov), než koľko času ubehlo medzi T-Rexom a dnešným dňom (66 miliónov rokov)!"
     },
 
-    fossilDescription: "Na túto fosíliu sa pozeráte vo vitrínke: Pevný kalcitový exoskelet dokonale rozdelený na tri pozdĺžne laloky (tri-lobos) a tri priečne časti: hlavový štít (cephalon) s klenutými očami, článkovaný ohybný trup (thorax) a koncový chvostík (pygidium).",
+    fossilDescription: "Na tieto exponáty sa pozeráte vo vitrínke: Dva autentické exempláre pravekých článkonožcov vystavené vedľa seba. Vľavo je podlhovastý exemplár s nádherne zachovaným oblým hlavovým štítom (cephalon), očnými oblúkmi a článkovaným trupom. Vpravo je robustný, kompaktnejší exemplár s hrubým priečnym ryhovaním a prirodzenou okrovo-sivou patinou.",
     story: "Trilobity patrili k najúspešnejším tvorom v histórii života na Zemi. Objavili sa počas Kambrickej explózie pred vyše 520 miliónmi rokov a kraľovali moriam neuveriteľných 270 miliónov rokov (pre porovnanie: moderný človek Homo sapiens existuje sotva 300 000 rokov).",
 
     trivia: [
