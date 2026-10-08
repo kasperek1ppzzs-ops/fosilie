@@ -125,7 +125,7 @@ const FOSSILS_DATA = [
 
     fossilImage: "assets/mosasaurus_fossil.jpg?v=2",
     creatureImage: "assets/mosasaurus_life.jpg?v=2",
-    scaleImage: "assets/scale_mosasaurus.jpg",
+    scaleImage: "assets/scale_mosasaurus.jpg?v=2",
     image: "assets/mosasaurus_life.jpg?v=2",
     badgeColor: "#0ea5e9"
   },
