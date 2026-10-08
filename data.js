@@ -179,7 +179,7 @@ const FOSSILS_DATA = [
       }
     ],
 
-    fossilImage: "assets/otodus.jpg",
+    fossilImage: "assets/otodus_fossil.jpg",
     creatureImage: "assets/otodus_life.jpg",
     scaleImage: "assets/scale_otodus.jpg",
     image: "assets/otodus_life.jpg",
@@ -235,7 +235,7 @@ const FOSSILS_DATA = [
       }
     ],
 
-    fossilImage: "assets/amber.jpg",
+    fossilImage: "assets/amber_fossil.jpg",
     creatureImage: "assets/amber_life.jpg",
     scaleImage: "assets/scale_amber.jpg",
     image: "assets/amber_life.jpg",
@@ -291,7 +291,7 @@ const FOSSILS_DATA = [
       }
     ],
 
-    fossilImage: "assets/trilobite.jpg",
+    fossilImage: "assets/trilobite_fossil.jpg",
     creatureImage: "assets/trilobite_life.jpg",
     scaleImage: "assets/scale_trilobite.jpg",
     image: "assets/trilobite_life.jpg",
