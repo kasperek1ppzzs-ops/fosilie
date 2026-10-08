@@ -123,7 +123,7 @@ const FOSSILS_DATA = [
       }
     ],
 
-    fossilImage: "assets/mosasaurus_fossil.jpg",
+    fossilImage: "assets/mosasaurus_fossil.jpg?v=2",
     creatureImage: "assets/mosasaurus_life.jpg",
     scaleImage: "assets/scale_mosasaurus.jpg",
     image: "assets/mosasaurus_life.jpg",
@@ -291,7 +291,7 @@ const FOSSILS_DATA = [
       }
     ],
 
-    fossilImage: "assets/trilobite_fossil.jpg",
+    fossilImage: "assets/trilobite_fossil.jpg?v=2",
     creatureImage: "assets/trilobite_life.jpg",
     scaleImage: "assets/scale_trilobite.jpg",
     image: "assets/trilobite_life.jpg",
