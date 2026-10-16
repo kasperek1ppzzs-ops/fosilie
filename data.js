@@ -181,7 +181,7 @@ const FOSSILS_DATA = [
 
     fossilImage: "assets/otodus_fossil.jpg",
     creatureImage: "assets/otodus_life.jpg",
-    scaleImage: "assets/scale_otodus.jpg",
+    scaleImage: "assets/scale_otodus.jpg?v=2",
     image: "assets/otodus_life.jpg",
     badgeColor: "#06b6d4"
   },
