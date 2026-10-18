@@ -19,13 +19,13 @@
   <!-- Google Fonts: Cinzel (múzejné nadpisy) & Outfit (čistý moderný text) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=14">
+  <link rel="stylesheet" href="style.css?v=16">
 
   <!-- Skripty s paralelným odloženým sťahovaním -->
-  <script defer src="data.js?v=14"></script>
-  <script defer src="app.js?v=14"></script>
+  <script defer src="data.js?v=15"></script>
+  <script defer src="app.js?v=16"></script>
 </head>
 <body>
 
@@ -33,15 +33,45 @@
   <div class="ambient-glow glow-1" aria-hidden="true"></div>
   <div class="ambient-glow glow-2" aria-hidden="true"></div>
 
+  <a class="skip-link" href="#exponaty">Prejsť na exponáty</a>
+  <header class="site-header">
+    <a class="brand" href="#uvod" aria-label="Prehistorická vitrína – úvod">
+      <span>Prehistorická vitrína</span>
+    </a>
+    <nav aria-label="Hlavná navigácia">
+      <a href="#exponaty">Exponáty</a>
+      <a href="#cesta-casom">Cesta časom</a>
+    </nav>
+  </header>
+
   <!-- Úvodný Hero titulok -->
-  <section class="hero-section">
+  <section class="hero-section" id="uvod">
+    <div class="hero-backdrop" aria-hidden="true"></div>
     <div class="hero-content">
-      <h1 class="hero-title">Objavte pravek v našej vitrínke</h1>
+      <h1 class="hero-title">Malá vitrína.<br><em>Obrovský príbeh.</em></h1>
+      <p class="hero-intro">Objavte fosílie a svet, z ktorého pochádzajú.</p>
+      <a class="hero-link" href="#exponaty">Preskúmať exponáty <span aria-hidden="true">↓</span></a>
     </div>
+    <div class="hero-reconstruction" aria-hidden="true"><img src="assets/spinosaurus_life.webp" alt="" width="1024" height="572" decoding="async"></div>
+    <figure class="hero-specimen">
+      <img src="assets/spinosaurus_fossil.webp" alt="Skutočný fosílny zub Spinosaurusa z vitrínky" width="1200" height="896" fetchpriority="high" decoding="async">
+      <figcaption><span>Exponát 01 · skutočná fosília</span> Fosílny zub Spinosaurusa</figcaption>
+    </figure>
   </section>
 
+  <!-- Hlavný grid s exponátmi -->
+  <main class="gallery-section" id="exponaty">
+    <div class="section-heading">
+      <div><h2>Vybrané exponáty</h2></div>
+      <p>Vyberte exponát. Najprv uvidíte reálnu fosíliu, potom jej súvislosť so živým tvorom a mierkou.</p>
+    </div>
+    <div class="gallery-container" id="fossils-grid">
+      <!-- Generované dynamicky z data.js -->
+    </div>
+  </main>
+
   <!-- Geologická časová os Zeme (Horizontálna priamka s obdobiami a fosíliami) -->
-  <section class="geochron-section" aria-label="Geologické obdobia a časová os">
+  <section class="geochron-section" id="cesta-casom" aria-label="Geologické obdobia a časová os">
     <div class="geochron-container">
       <div class="geochron-header">
         <h2 class="geochron-title">Geologické obdobia & naše fosílie na časovej osi</h2>
@@ -88,7 +118,7 @@
               <div class="axis-point-column col-fossil-top">
                 <div class="point-slot-top">
                   <button type="button" class="timeline-fossil-pin fossil-timeline-card pin-trilobite" data-fossil-id="trilobite" title="Zobraziť Trilobita (Devón • 420 mil. r.)">
-                    <img src="assets/trilobite_life.jpg" alt="Trilobit" class="card-pin-thumb" width="38" height="38" loading="lazy" decoding="async">
+                    <img src="assets/trilobite_life.webp" alt="Trilobit" class="card-pin-thumb" width="38" height="38" loading="lazy" decoding="async">
                     <div class="card-pin-body">
                       <span class="card-pin-tag">Vitrínka • 420 mil. r.</span>
                       <strong class="card-pin-name">Trilobit</strong>
@@ -159,7 +189,7 @@
                 <div class="point-slot-bottom">
                   <div class="stem-line stem-to-top"></div>
                   <button type="button" class="timeline-fossil-pin fossil-timeline-card pin-spino" data-fossil-id="spinosaurus" title="Zobraziť Spinosaurusa (Krieda • 98 mil. r.)">
-                    <img src="assets/spinosaurus_life.jpg" alt="Spinosaurus" class="card-pin-thumb" width="38" height="38" loading="lazy" decoding="async">
+                    <img src="assets/spinosaurus_life.webp" alt="Spinosaurus" class="card-pin-thumb" width="38" height="38" loading="lazy" decoding="async">
                     <div class="card-pin-body">
                       <span class="card-pin-tag">Vitrínka • 98 mil. r.</span>
                       <strong class="card-pin-name">Spinosaurus</strong>
@@ -173,7 +203,7 @@
               <div class="axis-point-column col-fossil-top">
                 <div class="point-slot-top">
                   <button type="button" class="timeline-fossil-pin fossil-timeline-card pin-mosa" data-fossil-id="mosasaurus" title="Zobraziť Mosasaura (Krieda • 70 mil. r.)">
-                    <img src="assets/mosasaurus_life.jpg?v=2" alt="Mosasaurus" class="card-pin-thumb" width="38" height="38" loading="lazy" decoding="async">
+                    <img src="assets/mosasaurus_life.webp?v=2" alt="Mosasaurus" class="card-pin-thumb" width="38" height="38" loading="lazy" decoding="async">
                     <div class="card-pin-body">
                       <span class="card-pin-tag">Vitrínka • 70 mil. r.</span>
                       <strong class="card-pin-name">Mosasaurus</strong>
@@ -227,7 +257,7 @@
                 <div class="point-slot-bottom">
                   <div class="stem-line stem-to-top"></div>
                   <button type="button" class="timeline-fossil-pin fossil-timeline-card pin-otodus" data-fossil-id="otodus" title="Zobraziť Žraloka Otodus (Eocén • 50 mil. r.)">
-                    <img src="assets/otodus_life.jpg" alt="Žralok Otodus" class="card-pin-thumb" width="38" height="38" loading="lazy" decoding="async">
+                    <img src="assets/otodus_life.webp" alt="Žralok Otodus" class="card-pin-thumb" width="38" height="38" loading="lazy" decoding="async">
                     <div class="card-pin-body">
                       <span class="card-pin-tag">Vitrínka • 50 mil. r.</span>
                       <strong class="card-pin-name">Žralok Otodus</strong>
@@ -241,7 +271,7 @@
               <div class="axis-point-column col-fossil-top">
                 <div class="point-slot-top">
                   <button type="button" class="timeline-fossil-pin fossil-timeline-card pin-amber" data-fossil-id="amber" title="Zobraziť Jantár s hmyzom (Eocén • 45 mil. r.)">
-                    <img src="assets/amber_life.jpg" alt="Jantár s hmyzom" class="card-pin-thumb" width="38" height="38" loading="lazy" decoding="async">
+                    <img src="assets/amber_life.webp" alt="Jantár s hmyzom" class="card-pin-thumb" width="38" height="38" loading="lazy" decoding="async">
                     <div class="card-pin-body">
                       <span class="card-pin-tag">Vitrínka • 45 mil. r.</span>
                       <strong class="card-pin-name">Jantár s hmyzom</strong>
@@ -291,13 +321,6 @@
     </div>
   </section>
 
-  <!-- Hlavný grid s exponátmi -->
-  <main class="gallery-section">
-    <div class="gallery-container" id="fossils-grid">
-      <!-- Generované dynamicky z data.js -->
-    </div>
-  </main>
-
   <!-- MODÁLNE OKNO PRE DETAIL EXPONÁTU (HTML5 <dialog>) -->
   <dialog id="fossil-dialog" class="fossil-dialog" aria-labelledby="modal-common-name">
     <div class="dialog-card">
@@ -306,6 +329,7 @@
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
+        <span class="dialog-close-label">Späť</span>
       </button>
 
       <div class="dialog-scroll-body" id="modal-content-container">

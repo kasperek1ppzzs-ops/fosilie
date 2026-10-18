@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const lbViewCreature = document.getElementById('lb-view-creature');
   const lbViewScale = document.getElementById('lb-view-scale');
 
+  // Originálne fotografie ostávajú v data.js; pri dostupnej derivácii načítame menší WebP súbor.
+  function optimizedImage(source) {
+    return source ? source.replace(/\.jpg(?=(?:\?.*)?$)/i, '.webp') : source;
+  }
+
   // Inicializácia
   renderFossils();
   setupEventListeners();
@@ -57,12 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     card.innerHTML = `
       <div class="card-media">
-        <img src="${fossil.image}" alt="${fossil.name}" loading="lazy">
+        <img src="${optimizedImage(fossil.fossilImage)}" alt="Skutočná fosília: ${fossil.fossilType}" loading="lazy" decoding="async">
         <div class="card-period-badge">
           <span class="dot" style="background-color: ${badgeColor}; box-shadow: 0 0 8px ${badgeColor}"></span>
           <span>${fossil.shortPeriod || fossil.period}</span>
         </div>
-        <div class="card-type-tag">${fossil.age}</div>
+        <div class="card-type-tag">Skutočný exponát · ${fossil.age}</div>
       </div>
       <div class="card-body">
         <div class="card-titles">
@@ -70,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="card-sci-name">${fossil.name}</span>
         </div>
         <div class="card-footer-action">
-          <span>Otvoriť kartu & exponát</span>
+          <span>Fosília · tvor · mierka</span>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
@@ -98,24 +103,27 @@ document.addEventListener('DOMContentLoaded', () => {
   function openFossilModal(fossil) {
     state.currentFossil = fossil;
 
-    // Aktualizácia URL hash bez reloadu
-    history.replaceState(null, '', `#${fossil.id}`);
+    // Každý exponát má vlastný QR/deep link; tlačidlo Späť zatvorí aktuálnu kartu.
+    if (window.location.hash !== `#${fossil.id}`) history.pushState(null, '', `#${fossil.id}`);
 
     const badgeColor = fossil.badgeColor || '#f59e0b';
 
     modalContentContainer.innerHTML = `
       <div class="modal-header-hero" id="modal-header-hero" title="Kliknite na fotku pre zväčšenie na celú obrazovku">
-        <div class="hero-ambient-backdrop" id="modal-hero-backdrop" style="background-image: url('${fossil.creatureImage}')"></div>
-        <img id="modal-hero-img" src="${fossil.creatureImage}" alt="Rekonštrukcia ${fossil.commonName}">
+        <div class="hero-ambient-backdrop" id="modal-hero-backdrop" style="background-image: url('${optimizedImage(fossil.fossilImage)}')"></div>
+        <img id="modal-hero-img" src="${optimizedImage(fossil.fossilImage)}" alt="Skutočná fosília: ${fossil.fossilType}">
         
         <!-- Plávajúca horná lišta ovládania na fotke -->
         <div class="hero-floating-controls">
           <div class="modal-view-selector" role="group" aria-label="Prepínač obrázka">
-            <button type="button" class="view-pill active" id="btn-view-creature">
-              🦕 Podoba tvora
+            <button type="button" class="view-pill active" id="btn-view-fossil" aria-label="Zobraziť fosíliu vo vitrínke">
+              Fosília
             </button>
-            <button type="button" class="view-pill" id="btn-view-fossil">
-              🦴 Fosília vo vitrínke
+            <button type="button" class="view-pill" id="btn-view-creature" aria-label="Zobraziť podobu tvora">
+              Tvor
+            </button>
+            <button type="button" class="view-pill" id="btn-view-scale" aria-label="Zobraziť porovnanie mierky">
+              Mierka
             </button>
           </div>
 
@@ -178,9 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="modal-inner-padding">
         <!-- Vizuálne duo: Skutočná fosília na ktorú sa pozerá vs. tvor -->
         <div class="visual-gallery-duo">
-          <div class="gallery-duo-item active" id="duo-creature-card" role="button" tabindex="0" title="Zobraziť rekonštrukciu tvora">
+          <div class="gallery-duo-item" id="duo-creature-card" role="button" tabindex="0" title="Zobraziť rekonštrukciu tvora">
             <div class="duo-img-wrap">
-              <img src="${fossil.creatureImage}" alt="Rekonštrukcia pravekého tvora">
+              <img src="${optimizedImage(fossil.creatureImage)}" alt="Rekonštrukcia pravekého tvora" loading="lazy" decoding="async">
               <span class="duo-badge creature-badge">🦕 Podoba a život tvora</span>
             </div>
             <div class="duo-caption">
@@ -189,9 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
 
-          <div class="gallery-duo-item" id="duo-fossil-card" role="button" tabindex="0" title="Zobraziť fosíliu vo vitrínke">
+          <div class="gallery-duo-item active" id="duo-fossil-card" role="button" tabindex="0" title="Zobraziť fosíliu vo vitrínke">
             <div class="duo-img-wrap">
-              <img src="${fossil.fossilImage}" alt="Skutočná fosília vo vitrínke">
+              <img src="${optimizedImage(fossil.fossilImage)}" alt="Skutočná fosília vo vitrínke" loading="lazy" decoding="async">
               <span class="duo-badge fossil-badge">🦴 Na toto sa pozeráte vo vitrínke</span>
             </div>
             <div class="duo-caption">
@@ -267,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Fotorealistické porovnanie v plnej kráse -->
             <div class="real-scale-container" id="real-scale-view" role="button" tabindex="0" title="Kliknite pre otvorenie v plnom zobrazení na celú obrazovku">
               <div class="real-scale-stage">
-                <img src="${fossil.scaleImage || fossil.creatureImage}" alt="Realistické porovnanie veľkosti - ${fossil.commonName}" class="real-scale-img" id="scale-comparison-img">
+                <img src="${optimizedImage(fossil.scaleImage || fossil.creatureImage)}" alt="Realistické porovnanie veľkosti - ${fossil.commonName}" class="real-scale-img" id="scale-comparison-img" loading="lazy" decoding="async">
                 <div class="real-scale-badge-bar">
                   <span class="real-scale-badge creature">
                     <span>${fossil.category === 'invertebrates' ? '🐚' : (fossil.category === 'marine' ? '🌊' : '🦖')}</span>
@@ -358,6 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <!-- Akčná lišta -->
         <div class="modal-footer-bar">
+          <button id="modal-next-btn" class="btn btn-secondary" aria-label="Otvoriť ďalší exponát">Ďalší exponát →</button>
           <button id="modal-share-btn" class="btn btn-secondary">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="18" cy="5" r="3"></circle>
@@ -376,10 +385,10 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
 
     // Otvorenie natívneho modálu
-    fossilDialog.showModal();
+    if (!fossilDialog.open) fossilDialog.showModal();
     modalContentContainer.scrollTop = 0;
 
-    let currentModalView = 'creature';
+    let currentModalView = 'fossil';
 
     // Logika prepínania medzi fotkou fosílie a rekonštrukciou tvora
     const heroContainer = document.getElementById('modal-header-hero');
@@ -387,6 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroBackdrop = document.getElementById('modal-hero-backdrop');
     const btnViewFossil = document.getElementById('btn-view-fossil');
     const btnViewCreature = document.getElementById('btn-view-creature');
+    const btnViewScale = document.getElementById('btn-view-scale');
     const duoFossilCard = document.getElementById('duo-fossil-card');
     const duoCreatureCard = document.getElementById('duo-creature-card');
     const btnToggleFit = document.getElementById('btn-toggle-fit');
@@ -396,22 +406,32 @@ document.addEventListener('DOMContentLoaded', () => {
     function switchView(viewType) {
       currentModalView = viewType;
       if (viewType === 'fossil') {
-        heroImg.src = fossil.fossilImage;
+        heroImg.src = optimizedImage(fossil.fossilImage);
         heroImg.alt = fossil.fossilType;
-        if (heroBackdrop) heroBackdrop.style.backgroundImage = `url('${fossil.fossilImage}')`;
+        if (heroBackdrop) heroBackdrop.style.backgroundImage = `url('${optimizedImage(fossil.fossilImage)}')`;
         btnViewFossil.classList.add('active');
         btnViewCreature.classList.remove('active');
         duoFossilCard.classList.add('active');
         duoCreatureCard.classList.remove('active');
-      } else {
-        heroImg.src = fossil.creatureImage;
+      } else if (viewType === 'creature') {
+        heroImg.src = optimizedImage(fossil.creatureImage);
         heroImg.alt = `Rekonštrukcia ${fossil.commonName}`;
-        if (heroBackdrop) heroBackdrop.style.backgroundImage = `url('${fossil.creatureImage}')`;
+        if (heroBackdrop) heroBackdrop.style.backgroundImage = `url('${optimizedImage(fossil.creatureImage)}')`;
         btnViewCreature.classList.add('active');
         btnViewFossil.classList.remove('active');
         duoCreatureCard.classList.add('active');
         duoFossilCard.classList.remove('active');
+      } else {
+        const scaleImage = optimizedImage(fossil.scaleImage || fossil.creatureImage);
+        heroImg.src = scaleImage;
+        heroImg.alt = `Porovnanie veľkosti: ${fossil.commonName}`;
+        if (heroBackdrop) heroBackdrop.style.backgroundImage = `url('${scaleImage}')`;
+        btnViewFossil.classList.remove('active');
+        btnViewCreature.classList.remove('active');
+        duoCreatureCard.classList.remove('active');
+        duoFossilCard.classList.remove('active');
       }
+      btnViewScale.classList.toggle('active', viewType === 'scale');
       if (lightboxDialog && lightboxDialog.open) {
         updateLightboxContent(fossil, currentModalView);
       }
@@ -427,6 +447,12 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       e.stopPropagation();
       switchView('creature');
+    });
+
+    btnViewScale.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      switchView('scale');
     });
 
     duoFossilCard.addEventListener('click', (e) => {
@@ -502,6 +528,12 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       closeFossilModal();
     });
+
+    document.getElementById('modal-next-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      const index = FOSSILS_DATA.findIndex(item => item.id === fossil.id);
+      openFossilModal(FOSSILS_DATA[(index + 1) % FOSSILS_DATA.length]);
+    });
   }
 
   function closeFossilModal() {
@@ -529,7 +561,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (viewType === 'scale') {
       if (lightboxImg) {
-        lightboxImg.src = fossil.scaleImage || fossil.creatureImage;
+        lightboxImg.src = optimizedImage(fossil.scaleImage || fossil.creatureImage);
         lightboxImg.alt = `Fotorealistické porovnanie veľkosti: ${fossil.commonName} a človek`;
       }
       if (lightboxCaptionName) {
@@ -547,7 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isFossil = viewType === 'fossil';
     if (lightboxImg) {
-      lightboxImg.src = isFossil ? fossil.fossilImage : fossil.creatureImage;
+      lightboxImg.src = optimizedImage(isFossil ? fossil.fossilImage : fossil.creatureImage);
       lightboxImg.alt = isFossil ? fossil.fossilType : fossil.commonName;
     }
     if (lightboxCaptionName) {
@@ -604,6 +636,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function setupEventListeners() {
     // Zatváranie modálu
     closeDialogBtn.addEventListener('click', closeFossilModal);
+    fossilDialog.addEventListener('cancel', (e) => {
+      e.preventDefault();
+      closeFossilModal();
+    });
 
     // Light-dismiss: zatvorenie dialógu IBA pri kliknutí priamo na tmavé pozadie (backdrop)
     fossilDialog.addEventListener('click', (e) => {
@@ -682,12 +718,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function checkUrlHash() {
     const hash = window.location.hash.replace('#', '');
     if (!hash) {
-      if (fossilDialog.open) fossilDialog.close();
+      if (fossilDialog.open) closeFossilModal();
       return;
     }
 
     const fossil = FOSSILS_DATA.find(f => f.id === hash);
-    if (fossil) {
+    if (fossil && (!fossilDialog.open || state.currentFossil?.id !== fossil.id)) {
       openFossilModal(fossil);
     }
   }
